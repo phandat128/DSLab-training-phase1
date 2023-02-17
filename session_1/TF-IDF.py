@@ -85,14 +85,14 @@ def get_tf_idf(_data_path):
     with open("../datasets/20news-bydate/word_idfs.txt") as f:
         # list of (word, idf)
         _word_idfs = [(_line.split("<fff>")[0], float(_line.split("<fff>")[1]))
-                     for _line in f.read().splitlines()]
+                      for _line in f.read().splitlines()]
         _word_IDs = dict([(_word, _index)
                           for _index, (_word, _idf) in enumerate(_word_idfs)])
         _idfs = dict(_word_idfs)
     with open(_data_path) as f:
         _documents = [(int(_line.split("<fff>")[0]),
-                      int(_line.split("<fff>")[1]),
-                      _line.split("<fff>")[2])
+                       int(_line.split("<fff>")[1]),
+                       _line.split("<fff>")[2])
                       for _line in f.read().splitlines()]
         _data_tf_idf = []
         for _document in _documents:  # for each document
@@ -115,7 +115,7 @@ def get_tf_idf(_data_path):
             _data_tf_idf.append((_group_id, _doc_id, _sparse_rep))
         with open("../datasets/20news-bydate/tf-idf.txt", "w") as _f:
             _f.write("\n".join([str(_group_id) + "<fff>" + str(_doc_id) + "<fff>" + _sparse_rep
-                               for _group_id, _doc_id, _sparse_id in _data_tf_idf]))
+                                for _group_id, _doc_id, _sparse_rep in _data_tf_idf]))
 
 
 if __name__ == '__main__':
